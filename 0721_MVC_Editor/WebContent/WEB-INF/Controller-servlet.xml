@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+   
+   	<context:annotation-config></context:annotation-config>
+   	
+    <!-- 
+    	스프링환경에서 파일첨부를 하면 JSP문서의 form의 형식이 encType="multipart/form-data"로 지정되어야 한다.
+    	이렇게 되면 일반적인 request 객체로 파라미터들뿐만 아니라 첨부파일을 받지 못한다. 그래서 반드시 MultipartRequest 객체가 필요한데...
+    	
+    	스프링에서는 다음과 같이 mutipartResolver를 지정해서 쓴다.
+    	* 필요한 라이브러리
+    		* commons-fileupload
+    		* commons-io
+     -->
+     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+     	<property name="defaultEncoding" value="utf-8"></property>
+     	<property name="maxUploadSize" value="-1"></property>
+     </bean>
+     <!-- 비동기식 통신을 위한 객체들 -->
+     <bean id="jsonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jsonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+     
+     <!-- maxUploadSize의 value는 바이트 단위 -->
+    
+    <bean id="editor" class="spring.controll.EditorController">
+    </bean>
+    
+    
+    <!-- View Resolver설정 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp"/>
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+	</bean>
+    
+</beans>
