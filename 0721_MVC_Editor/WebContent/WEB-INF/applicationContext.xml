@@ -50,7 +50,8 @@ xmlns:context="http://www.springframework.org/schema/context"
     </bean>
     
     <!-- 사용자가 필요에 따라 정의한 DAO들을 생성한다. -->
-    
+    <bean id="t_dao" class="mybatis.dao.TestDAO" 
+    	autowire="byName"/>
 
 </beans>
 

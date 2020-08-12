@@ -120,15 +120,15 @@
 	
 
 	function sendData(){
-		for(var i=0 ; i<document.forms[0].elements.length ; i++){
+		/*for(var i=0 ; i<document.forms[0].elements.length ; i++){
 			if(document.forms[0].elements[i].value == ""){
 				alert(document.forms[0].elements[i].name+
 						"를 입력하세요");
 				document.forms[0].elements[i].focus();
 				return;//수행 중단
 			}
-		}
-
+		}	유효성 검사!
+ */
 //		document.forms[0].action = "test.jsp";
 		document.forms[0].submit();
 	}
@@ -145,7 +145,7 @@
 
 
 	<div id="bbs">
-	<form action="write_ok.okj" method="post" 
+	<form action="write.okj" method="post" 
 	encType="multipart/form-data">
 		
 		<table summary="게시판 글쓰기">
@@ -153,7 +153,7 @@
 			<tbody>
 				<tr>
 					<th>제목:</th>
-					<td><input type="text" name="title" size="45"/></td>
+					<td><input type="text" name="subject" size="45"/></td>
 				</tr>
 				
 				<tr>

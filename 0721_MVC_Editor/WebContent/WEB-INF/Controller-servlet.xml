@@ -35,8 +35,10 @@ xmlns:context="http://www.springframework.org/schema/context"
 	</bean>
      
      <!-- maxUploadSize의 value는 바이트 단위 -->
-    
+    <!-- 여기 수정해도 서버 껏다 켜야한다 -->
     <bean id="editor" class="spring.controll.EditorController">
+    	
+    
     </bean>
     
     

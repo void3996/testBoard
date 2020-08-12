@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- VALUES(test_seq.NEXTVAL, #{subject 멤버변수와 동일한 이름 들어가야한다. 키값(키의 이름)이 들어와야 한다.})  -->
+	<!-- parameterType="java.util.Map 일경우 저장된 키값, parameterType=int,string 등 이 올땐 VALUES임의 지정 가능 -->
+<mapper namespace="test">
+
+	  <insert id="add" parameterType="data.vo.TestVO">
+  	INSERT INTO test_t(idx, subject, content, 
+  			file_name, reg_date, ip)
+  	VALUES(test_seq.NEXTVAL, #{subject}, #{content},
+  		#{file_name}, sysdate, #{ip})
+  </insert>
+
+</mapper>
