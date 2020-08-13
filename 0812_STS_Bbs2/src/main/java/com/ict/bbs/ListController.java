@@ -12,7 +12,7 @@ import mybatis.vo.BbsVO;
 import spring.util.Paging;
 
 @Controller
-public class LIstController {
+public class ListController {
 	@Autowired
 	private BbsDAO b_dao;
 	//페이징 기법에 필요한 여러 변수들
@@ -60,7 +60,7 @@ public class LIstController {
 		mv.addObject("list", ar);
 		mv.addObject("pageCode", pageCode);
 		mv.addObject("nowPage", nowPage);
-		mv.addObject("blocklist", BLOCK_LIST);
+		mv.addObject("blockList", BLOCK_LIST);
 		mv.addObject("rowTotal", rowTotal);
 		
 		mv.setViewName("list");

@@ -2,21 +2,14 @@ package mybatis.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BbsVO {
-	private String seq,
-				writer,
-				title,
-				content, 
-				pwd,
-				hit,
-				ref,
-				step,
-				sunbun,
-				bname,
-				regdate,
-				uploadFileName,
-				ip,
-				status;
+	
+	private String seq, writer, title, content, pwd, hit, ref, step, 
+	sunbun, bname, regdate, uploadFileName, ip, status, nowPage;
+	
+	private MultipartFile upload;
 
 	public String getSeq() {
 		return seq;
@@ -128,6 +121,23 @@ public class BbsVO {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+
+	public String getNowPage() {
+		return nowPage;
+	}
+
+	public void setNowPage(String nowPage) {
+		this.nowPage = nowPage;
+	}
+
+	public MultipartFile getUpload() {
+		return upload;
+	}
+
+	public void setUpload(MultipartFile upload) {
+		this.upload = upload;
 	}
 	
 	
