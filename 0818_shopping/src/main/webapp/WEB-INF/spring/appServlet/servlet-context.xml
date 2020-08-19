@@ -23,6 +23,16 @@
 	
 	<context:component-scan base-package="com.mvc.controller" />
 	
+	<!-- Interceptor 패키지를 인식할수 있게 설정. 프로젝트가 실행되는 웹환경과 관련된 설정은 root-context가 아닌 servlet-context에서 설정을 해야한다. -->
+	<beans:bean id="AdminInterceptor" class="com.mvc.interceptor.AdminInterceptor"></beans:bean>
 	
+	<!-- 가장 먼저 사용할 빈의 이름과 경로를 설정하고, 매핑을 이용해 인터셉터가 실행되는 조건을 만들어준다
+	 /admin/** 이므로, /admin 하위의 모든 경로가 포함된다. 실행될 빈의 이름을 작성한다. -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**"/>
+			<beans:ref bean="AdminInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>
