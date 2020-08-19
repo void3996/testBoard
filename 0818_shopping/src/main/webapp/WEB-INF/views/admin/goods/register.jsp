@@ -121,7 +121,7 @@ for (var i = 0; i < cate1Arr.length; i++) {
 $(document).on("change", "select.category1", function() {
 	
 	var cate2Arr = new Array();
-	var cate20bj = new Object();
+	var cate2Obj = new Object();
 	
 	/* 2차 분류 셀렉트 박스에 삽입할 데이터준비 */
 	/*jsondata에서 level값이 2인 경우에만 cate2Obj에 추가  */
@@ -130,13 +130,13 @@ $(document).on("change", "select.category1", function() {
 	for(var i = 0; i < jsonData.length; i++) {
 	
 		if (jsonData[i].level == "2") {
-			cate20bj = new Object();	
+			cate2Obj = new Object();	
 			
 			cate2Obj.cateCode = jsonData[i].cateCode;
 			cate2Obj.cateName = jsonData[i].cateName;
 			cate2Obj.cateCodeRef = jsonData[i].cateCodeRef;
 			
-			cate2Arr.push(cate20bj);
+			cate2Arr.push(cate2Obj);
 			}
 		}
 	/* cate2Obj에 저장된 값을 cate2Arr 배열에 저장 */
