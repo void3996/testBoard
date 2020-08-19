@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mappers.memberMapper">
+
+	<!-- 회원 가입 -->
+	<insert id="signup">
+		 insert into tbl_member(userId, userPass, userName, userPhon)
+		  values(#{userId}, #{userPass}, #{userName}, #{userPhon}) 
+	</insert>
+	
+	<!-- 로그인 -->
+	<!-- BCrypt 암호화는 매번 값이 바뀌기 때문에 입력한 아이디를 이용해 패스워드를 가져온뒤
+	로그인 할때 입력한 패스워드와 데이터 베이스에 저장된 패스워드를 비교하는 방식 -->
+	<select id="signin" resultType="com.mvc.domain.MemberVO">
+		select
+		    userId, userName, userPass, userPhon, userAddr1, userAddr2, userAddr3, regDate, verify
+		from
+		    tbl_member
+		where userId = #{userId}
+	</select>
+
+</mapper>
