@@ -34,6 +34,14 @@
 	footer#footer { background:#f9f9f9; padding:20px; }
 	footer#footer ul li { display:inline-block; margin-right:10px; } 
 </style>
+<style>
+	.inputArea { margin:10px 0; }
+	select { width:100px; }
+	label { display:inline-block; width:70px; padding:5px; }
+	label[for='gdsDes'] { display:block; }
+	input { width:150px; }
+	textarea#gdsDes { width:400px; height:180px; }
+</style>
 		 
 </head>
 <body>
@@ -70,6 +78,30 @@
 					</select>
 				</div>
 				
+				<div class="inputArea">
+					<label for="gdsName">상품명</label>
+					<input type="text" id="gdsName" name="gdsName"/>
+				</div>
+				
+				<div class="inputArea">
+					<label for="gdsPrice">상품가격</label>
+					<input type="text" id="gdsPrice" name="gdsPrice"/>
+				</div>
+				
+				<div class="inputArea">
+					<label for="gdsStock">상품수량</label>
+					<input type="text" id="gdsStock" name="gdsStock"/>
+				</div>
+				
+				<div class="inputArea">
+					<label for="gdsDes">상품소개</label>
+					<textarea rows="5" cols="50" id="gdsDes" name="gdsDes"></textarea>
+				</div>
+				
+				<div class="inputArea">
+					<button type="submit" id="register_Btn" class="btn btn-primary">등록</button>
+				</div>
+				
 			</form>
 		</div>
 	</section>
@@ -89,7 +121,7 @@ var jsonData = JSON.parse('${category}');
 console.log(jsonData);
 
 var cate1Arr = new Array();
-var cate10bj = new Object();
+var cate1Obj = new Object();
 
 /* 1차 분류 셀렉트 박스에 삽입할 데이터준비 */
 /*jsondata에서 level값이 1인 경우에만 cate1Obj에 추가  */
@@ -99,12 +131,12 @@ var cate10bj = new Object();
 for(var i = 0; i < jsonData.length; i++) {
 	
 	if (jsonData[i].level == "1") {
-		cate10bj = new Object();	
+		cate1Obj = new Object();	
 		
-		cate10bj.cateCode = jsonData[i].cateCode;
-		cate10bj.cateName = jsonData[i].cateName;
+		cate1Obj.cateCode = jsonData[i].cateCode;
+		cate1Obj.cateName = jsonData[i].cateName;
 		
-		cate1Arr.push(cate10bj);
+		cate1Arr.push(cate1Obj);
 	}
 }
 /* 1차 분류 셀렉트 박스에 데이터 삽입  */
