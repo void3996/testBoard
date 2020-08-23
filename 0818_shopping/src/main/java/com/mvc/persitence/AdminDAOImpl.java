@@ -43,4 +43,9 @@ public class AdminDAOImpl implements AdminDAO {
 	public void goodsModify(GoodsVO vo) throws Exception{
 		sql.update(namespace + ".goodsModify", vo);
 	}
+	//상품 삭제
+	@Override
+	public void goodsDelete(int gdsNum) throws Exception{
+		sql.delete(namespace+ ".goodsDelete", gdsNum);
+	}
 }

@@ -24,7 +24,7 @@
 	nav#nav { padding:10px; text-align:right; }
 	nav#nav ul li { display:inline-block; margin-left:10px; }
  
- 		section#container { padding:20px 0; border-top:2px solid #eee; border-bottom:2px solid #eee; }
+	section#container { padding:20px 0; border-top:2px solid #eee; border-bottom:2px solid #eee; }
 	section#container::after { content:""; display:block; clear:both; }
 	aside { float:left; width:200px; }
 	div#container_box { float:right; width:calc(100% - 200px - 20px); }
@@ -43,9 +43,9 @@
 	label[for='gdsDes'] { display:block; }
 	input { width:150px; }
 	textarea#gdsDes { width:400px; height:180px; }
-	.oriImg { width:500px; height:auto; }
+	/* .oriImg { width:500px; height:auto; }
 	.thumbImg {}
-	.gdsDes img { max-width:600px; height:auto; }
+	.gdsDes img { max-width:600px; height:auto; } */
 </style>
 </head>
 <body>
@@ -190,7 +190,7 @@
 							 $(".category1").val(select_cateCode);
 							 //$(".category2").val(select_cateCode);
 							 // select_cateCod가 부여되지 않는 현상이 있어서 아래 코드로 대체
-							 $(".category2").append("<option value=" + select_cateCode + " selected='selected'>전체</option>");
+							 $(".category2").append("<option value="' + select_cateCode + '" selected='selected'>전체</option>");
 						}
 					</script>
 				

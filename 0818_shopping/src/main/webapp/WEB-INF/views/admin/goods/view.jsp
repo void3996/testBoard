@@ -43,9 +43,9 @@
 	label[for='gdsDes'] { display:block; }
 	input { width:150px; }
 	textarea#gdsDes { width:400px; height:180px; }
-	.oriImg { width:500px; height:auto; }
+	/* .oriImg { width:500px; height:auto; }
 	.thumbImg {}
-	.gdsDes img { max-width:600px; height:auto; }
+	.gdsDes img { max-width:600px; height:auto; } */
 </style>
 </head>
 <body>
@@ -111,8 +111,13 @@
 					});
 					
 					$("#delete_Btn").click(function() {
-						formObj.attr("action", "/admin/goods/delete");
-						formObj.submit();
+						/*사용자에게 메시지를 보내서 확인, 취소 값을 받을수 있는 다이얼로그  */
+						var con = confirm("정말로 삭제하시겠습니까?");
+						
+						if(con){
+							formObj.attr("action", "/admin/goods/delete");
+							formObj.submit();
+						}
 					});
 				</script>
 				

@@ -98,6 +98,27 @@
 					<textarea rows="5" cols="50" id="gdsDes" name="gdsDes"></textarea>
 				</div>
 				
+				<div>
+					<label for="gdsImg">이미지</label>
+					<input type="file" id="gdsImg" name="file"/>
+					<div class="select_img"><img src=""/></div>
+					
+					<script type="text/javascript">
+						$("#gdsImg").change(function() {
+							if(this.files && this.files[0]){
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_img img").attr("src", data.target.result).width(500);
+								}
+								reader.readAsDataURL(this.files[0]);
+							}			
+						});
+					</script>
+					
+				</div>
+				
+				
+				
 				<div class="inputArea">
 					<button type="submit" id="register_Btn" class="btn btn-primary">등록</button>
 				</div>

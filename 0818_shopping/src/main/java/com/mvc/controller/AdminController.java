@@ -97,5 +97,14 @@ public class AdminController {
 		
 		return "redirect:/admin/index";
 	}
+	//상품 삭제
+	@RequestMapping(value = "/goods/delete", method = RequestMethod.POST)
+	public String postGoodsDelete(@RequestParam("n") int gdsNum) throws Exception{
+		logger.info("post goods delete");
+		
+		adminService.goodsDelete(gdsNum);
+		
+		return "redirect:/admin/index";
+	}
 
 }
