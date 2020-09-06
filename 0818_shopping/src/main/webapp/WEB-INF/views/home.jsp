@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <html>
 <head>
+<script src="/resources/videojs/video.min.js"></script>
+<script src="/resources/videojs/jquery.vide.min.js"></script>
+<link href="/resources/videojs/video-js.min.css" rel="stylesheet">
 	<title>Valpago</title>
 	
 	
@@ -56,7 +60,8 @@
 	
 </head>
 <body>
-<div id="root">
+<div id="root" data-vide-bg="mp4: resources/background/video1, webm: resources/background/video2, ogv: resources/background/video3, poster: resources/background/poster"
+  data-vide-options="posterType: jpg, loop: false, muted: false, position: 0% 0%">
 	<header id="header">
 		<div id="header_box">
 			<%@ include file="include/header.jsp" %>

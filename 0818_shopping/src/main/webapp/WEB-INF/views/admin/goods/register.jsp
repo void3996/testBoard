@@ -41,6 +41,8 @@
 	label[for='gdsDes'] { display:block; }
 	input { width:150px; }
 	textarea#gdsDes { width:400px; height:180px; }
+	
+	.select_img img{margin: 20px, 0;}
 </style>
 		 
 </head>
@@ -103,7 +105,7 @@
 					<input type="file" id="gdsImg" name="file"/>
 					<div class="select_img"><img src=""/></div>
 					
-					<script type="text/javascript">
+					<script>
 						$("#gdsImg").change(function() {
 							if(this.files && this.files[0]){
 								var reader = new FileReader;
@@ -114,10 +116,8 @@
 							}			
 						});
 					</script>
-					
-				</div>
-				
-				
+					<%=request.getRealPath("/") %>
+				</div>								
 				
 				<div class="inputArea">
 					<button type="submit" id="register_Btn" class="btn btn-primary">등록</button>

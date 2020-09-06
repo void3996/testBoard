@@ -218,6 +218,12 @@
 		   
     		<classifier>jdk15</classifier>
 		</dependency>
+		<!-- thumbnail -->
+		<dependency>
+		    <groupId>net.coobird</groupId>
+		    <artifactId>thumbnailator</artifactId>
+		    <version>0.4.12</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>

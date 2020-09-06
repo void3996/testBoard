@@ -2,6 +2,7 @@ package com.mvc.domain;
 
 import java.util.Date;
 //data 타입 저장
+//alter table tbl_goods add (gdsThumbImg varchar(200));
 public class GoodsVO {
 	private int	gdsNum;
 	private String	gdsName,
@@ -13,8 +14,6 @@ public class GoodsVO {
 	private Date	gdsDate;
 	
 	private String gdsThumbImg;
-	
-	
 	
 	public String getGdsThumbImg() {
 		return gdsThumbImg;
