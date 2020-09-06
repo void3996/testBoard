@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ict.mappers.messageMapper">
+
+	<!-- 쪽지보내기 -->
+	<insert id="addMessage">
+		INSERT INTO tbl_message (messageid, targetid, senderid, content)
+		VALUES (message_seq.NEXTVAL, #{targetid}, #{senderid}, #{content})
+	</insert>
+	
+	<select id="msgUser">
+		SELECT * from tbl_message where senderid = ${senderid}
+	</select>
+	
+	<!-- 쪽지함리스트 -->
+	<select id="msgList" resultType="com.ict.domain.MessageVO">
+		SELECT * FROM tbl_message where targetid = #{targetid}
+		order by messageid
+		
+	</select>
+</mapper>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	<!-- dao에서 @Autowired를 사용하기 때문에 아래와 같이 정의해야 한다. -->
+	<!-- <context:annotation-config/> -->
+	
+	<context:property-placeholder 
+    location="classpath:mybatis/props/jdbc.properties"/>
+    
+    <!-- Apache의 dbcp객체를 생성 -->
+    <bean id="dataSource" destroy-method="close"
+    class="org.apache.commons.dbcp.BasicDataSource">
+    	<property name="driverClassName" 
+    		value="${jdbc.driver}"/>
+    	<property name="url" 
+    		value="${jdbc.url}"/>
+    	<property name="username" 
+    		value="${jdbc.user}"/>
+    	<property name="password" 
+    		value="${jdbc.pwd}"/>
+    	
+    	<property name="maxActive" 
+    		value="${jdbc.maxActive}"/>
+    	<property name="maxIdle" 
+    		value="${jdbc.maxIdle}"/>
+    	<property name="minIdle" 
+    		value="${jdbc.minIdle}"/>
+    </bean>
+    <!-- mybatis -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<!-- 앞서 생성된 ds객체를 현재 객체에 넣어줘야 한다. -->
+    	<property name="dataSource" ref="dataSource"/>
+    	<!-- <property name="configLocation" value="classpath:/WEB-INF/classes/mybatis-config.xml"></property> -->
+    	<property name="configLocation" value="/WEB-INF/classes/mybatis-config.xml"></property>
+    	<!-- 맵퍼들(인식)의 위치 지정 -->
+    	<property name="mapperLocations"
+    		value="/WEB-INF/classes/mappers/*.xml"/>
+    </bean>
+    
+    <bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+    
+    
+    <tx:annotation-driven/>
+    
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+    	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+    
+    <!-- 패키지 -->
+    <context:component-scan base-package="com.ict.domain"></context:component-scan>
+    <context:component-scan base-package="com.ict.persitence"></context:component-scan>
+    <context:component-scan base-package="com.ict.service"></context:component-scan>
+    <context:component-scan base-package="com.ict.utils"></context:component-scan>
+</beans>

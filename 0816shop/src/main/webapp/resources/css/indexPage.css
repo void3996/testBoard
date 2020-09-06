@@ -1,0 +1,43 @@
+@charset "UTF-8";
+body {
+	font-family: sans-serif;
+}
+a{
+	color: black;
+}
+a:hover { color : #cc3300;
+text-decoration: none;
+}
+#container_pyo { width:1400px; border: 1px black solid; margin: 0 auto;}
+
+/* 메인 헤더 관련 */
+#main_header_pyo { width:1200px;  border: 1px black solid; margin: 10px auto;    }
+
+#main_header_form_pyo{ display: inline;}
+#main_header_form_section_search_pyo { margin-left: 30px;}
+
+#main_header_section_menu_pyo{display: inline; margin-right: 20px; float: right; margin: 30px;}
+.main_header_section_menuElement_pyo { margin: 10px;}
+
+/* 메인 배너 관련 */
+#main_banner_pyo { width:1100px; height:500px; border: 1px red solid; margin: 20px auto; }
+
+/* 메인 컨텐츠 관련 */
+#main_contents_pyo {width:1250px; border: 1px black solid; margin: 10px auto; display:flex; padding: 5px;}
+#main_contents_left_pyo{width:204px;  word-break:break-all;margin: 2px;}
+#main_contents_right_pyo{width:83%; border: 1px black solid; margin: 2px; }
+/* 컨텐츠 좌측 브랜드 관련 */
+#main_contents_left_brandbox_pyo {  height:80px; width:204px; }
+#main_contents_left_brand_pyo {  float:left; width:102px; height: 80px;   word-break:break-all; }
+
+/* 컨텐츠 우측 랭크 관련 */
+#main_contents_right_rank1_pyo, #main_contents_right_rank2_pyo { width: 980px; height:48%; border: 1px black solid; margin: 0 auto; margin-top: 10px;}
+
+/* 발매 정보 관련  */
+#main_releaseInfo_pyo {width:1250px; border: 1px black solid; margin: 10px auto; padding: 50px; }
+.media { margin: 5px;}
+h2 { margin-left: 20px;}
+
+/* 푸터  */
+#main_footer_pyo {background-color: gray;  width: 100%; }
+#main_footer_inside_pyo {width:1300px; text-align: center; margin: 0 auto; height: 50px; line-height: 50px;}
