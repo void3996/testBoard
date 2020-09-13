@@ -24,18 +24,20 @@
       </tr>
     </thead>
     <tbody>
+    
+    
     	<c:forEach items="${msglist }" var="msglist">
     		<tr>
     			<td><input type="checkbox" /></td>
-    			<td><a href="">${msglist.getSenderid }</a></td>
-    			<td>${msglist.getContent }</td>
+    			<td><a href="/message/send?target=${msglist.senderid }">${msglist.senderid }</a></td>
+    			<td>${msglist.content }</td>
     			<td>
     				
     			</td>
     			<td>
     				
    				</td>
-    			<td>${msglist.getStatus }</td>
+    			<td>${msglist.status }</td>
     			
     		</tr>
     	</c:forEach>

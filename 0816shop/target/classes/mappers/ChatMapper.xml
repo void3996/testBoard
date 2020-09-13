@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ict.mappers.ChatMapper">
+
+<insert id = "createRoom">
+	insert into CHATROOM (user_user_id , seller_USER_user_id, gdsnum_gdsnum_id) 
+	values(#{user_user_id}, #{seller_USER_user_id} , #{gdsnum_gdsnum_id} )
+
+
+</insert>
+
+
+<select id ="isRoom" resultType = "ChatroomVO">
+
+	select * from CHATROOM WHERE user_user_id = #{user_user_id} and seller_USER_user_id = #{seller_USER_user_id} 
+	and gdsnum_gdsnum_id = #{gdsnum_gdsnum_id} 
+</select>
+
+<insert id = "insertMessage">
+	insert into chat (chat_sender , chat_receiver, chat_content, 
+	CHATROOM_chatroom_id, user_user_id , seller_USER_user_id, gdsnum_gdsnum_id)
+	values (#{chat_sender}, #{chat_receiver}, #{chat_content} , #{CHATROOM_chatroom_id} , #{user_user_id},
+	#{seller_USER_user_id} , #{gdsnum_gdsnum_id})
+</insert>
+
+<select id = "getPartner" resultType = "com.ict.domain.ChatVO">
+	id from chat where seller_USER_user_id = #{seller_USER_user_id} and gdsnum_gdsnum_id = #{gdsnum_gdsnum_id}
+</select>
+<!-- <select id = "getProfile" resultType = "String">
+	select user_profileImagePath from USER WHERE user_id = #{user_id}
+</select> -->
+
+<select id = "getName" resultType = "String">
+	select memNickname from TBL_MEMBER where memId = #{memId}
+</select>
+
+<select id = "getMessageList" resultType = "ChatVO">
+	select m.* , user_name, user_profileImagePath from chat m left outer join TBL_MEMBER u on m.chat_sender = u.user_id where CHATROOM_chatroom_id = #{CHATROOM_chatroom_id}
+
+</select>
+
+<select id = "getRoomList" resultType = "ChatroomVO">
+	select * from CHATROOM where USER_user_id = #{USER_user_id}
+</select>
+<select id = "getRoomList2" resultType = "ChatroomVO">
+	select * from CHATROOM where seller_user_user_id = #{seller_user_user_id}
+</select>
+
+<select id = "getRecentMessage" resultType = "ChatVO">
+
+	select m.* , gdsName, gdsNum, seller_seller_id from chat m left outer join TBL_GOODS c on m.gdsnum_gdsnum_id = c.gdsnum 
+	where CHATROOM_chatroom_id = #{CHATROOM_chatroom_id} order by chat_id desc limit 1;
+
+</select>
+
+
+<select id = "getTutorId" resultType = "String">
+	select MEMID from TBL_MEMBER where USER_user_id = #{USER_user_id}
+</select>
+
+<update id ="updateReadTime">
+	update chat set chat_readTime = NOW() where seller_user_user_id = 
+	#{seller_user_user_id} AND gdsnum_gdsnum_id = #{gdsnum_gdsnum_id} AND chat_readTime = chat_sendTime and chat_sender = seller_user_user_id and USER_user_id = #{USER_user_id};
+</update>
+<update id ="updateReadTimeTutor">
+	update chat set chat_readTime = NOW() where seller_USER_user_id = #{seller_USER_user_id} AND gdsnum_gdsnum_id = #{gdsnum_gdsnum_id} AND chat_readTime = chat_sendTime and chat_sender = USER_user_id and USER_user_id = #{USER_user_id};
+
+</update>
+
+
+<select id = "getUnReadCount" resultType = "int">
+
+select count(*) from chat where USER_user_id = #{USER_user_id} and seller_USER_user_id = #{seller_USER_user_id} AND gdsnum_gdsnum_id = #{gdsnum_gdsnum_id} AND chat_readTime = chat_sendTime and chat_sender = seller_USER_user_id;
+
+</select>
+<select id = "getUnReadCountTutor" resultType = "int">
+
+select count(*) from chat where seller_USER_user_id =#{seller_USER_user_id} and gdsnum_gdsnum_id = #{gdsnum_gdsnum_id} AND chat_readTime = chat_sendTime and chat_sender = USER_user_id and USER_user_id = #{USER_user_id};
+
+</select>
+
+<select id = "getAllCount" resultType = "int">
+select count(*) from chat WHERE (seller_USER_user_id = #{seller_USER_user_id} and chat_readTime = chat_sendTime and chat_sender != #{USER_user_id}) or (USER_user_id = #{USER_user_id} and chat_readTime = chat_sendTime and chat_sender != #{USER_user_id}); 
+
+</select>
+</mapper>

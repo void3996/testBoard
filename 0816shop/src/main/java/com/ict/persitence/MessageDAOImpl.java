@@ -14,7 +14,7 @@ public class MessageDAOImpl implements MessageDAO{
 	@Inject
 	private SqlSession sql;
 	//매퍼
-	private static String namespace = "com.ict.mappers.messageMapper";
+	private static String namespace = "com.ict.mappers.messagemapper";
 	
 	//메세지 작성
 	@Override
@@ -37,7 +37,7 @@ public class MessageDAOImpl implements MessageDAO{
 	//메세지 목록
 	@Override
 	public List<MessageVO> getList(String mid) throws Exception{			
-		return sql.selectList(namespace + ".getList");
+		return sql.selectList(namespace + ".getList", mid);
 	}
 	
 	

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ict.mappers.messageMapper">
+<mapper namespace="com.ict.mappers.messagemapper">
 
 	<!-- 쪽지보내기 -->
 	<insert id="addMessage">
@@ -15,8 +15,8 @@
 	</select>
 	
 	<!-- 쪽지함리스트 -->
-	<select id="msgList" resultType="com.ict.domain.MessageVO">
-		SELECT * FROM tbl_message where targetid = #{targetid}
+	<select id="getList" resultType="com.ict.domain.MessageVO">
+		SELECT * FROM tbl_message where targetid = #{mid}
 		order by messageid
 		
 	</select>

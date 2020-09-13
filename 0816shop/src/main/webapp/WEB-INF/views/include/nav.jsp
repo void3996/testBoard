@@ -27,7 +27,10 @@
   <a href="/member/memedit">내 정보</a>
  </li>
  <li>
-  <a href="/member/msg">쪽지함</a>
+  <a href="#" class='goMsg'>쪽지함 <h3 id='msgCount'></h3></a>
+ </li>
+ <li>
+  <a href="/member/chat">채팅</a>
  </li>
   <li>
   <a href="/shop/cartList">카트 리스트</a>
@@ -44,7 +47,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -54,7 +57,13 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <div id="note_head">
+			<div id="note_head_in">
+				<span id="main_t"></span>
+				
+			</div>
+		</div>
+		
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary sendBtn">Send Message</button>
@@ -63,7 +72,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- JS, Popper.js, and jQuery -->
 
@@ -75,18 +84,46 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script>
 
+var msgArr = null;
+
+
+	$(".goMsg").click(function(e){
+		e.preventDefault();
+	})
+
+	
+	$.getJSON("/message/list", function(arr){
+		console.log(arr.length);
+		
+		msgArr = arr;
+		
+		$("#msgCount").html(arr.length);
+	});
+	
+
 
 var modal = $(".modal");
 
-function showMessageBox(){
+
+
+
+$("#msgCount").click(function(e){
 	
-	modal.modal("show");
+	e.stopPropagation();
 	
-}
+	location.href = "/message/my";
+	
+});
+
+
+
+
 
 $(".sendBtn").on("click", function(){
 	
 	console.log("sendBtn click...");
+	
+
 	
 	
 	

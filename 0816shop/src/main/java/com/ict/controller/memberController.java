@@ -95,9 +95,6 @@ public class memberController {
 	 
 	}
 	
-	
-	
-	
 	@RequestMapping(value = "/msg", method = RequestMethod.GET)
 	public String goMsg() throws Exception {
 	 logger.info("get signin");
