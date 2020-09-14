@@ -6,11 +6,18 @@
 <html>
 <head>
 <link rel="stylesheet" href="/resources/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/message.css">
 <style>
 </style>
     </head>
     <body>    
     	<h2>${member.memNickname}님의 쪽지함</h2>
+    	<aside>
+			<ul id="note_menu">
+				<li><alt="recv" title="recv" /><a href="note.php"><b>받은쪽지함</b></a></li>
+				<li><alt="recv" title="recv"  /><a href="note_send.php">보낸쪽지함</a></li>
+			</ul>
+		</aside>
        <div id="main_in">
 	<table class="list-table">
     <thead>
@@ -32,10 +39,10 @@
     			<td><a href="/message/send?target=${msglist.senderid }">${msglist.senderid }</a></td>
     			<td>${msglist.content }</td>
     			<td>
-    				
+    				<fmt:formatDate value="${msglist.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/>
     			</td>
     			<td>
-    				
+    				<fmt:formatDate value="${msglist.readdate }" pattern="yyyy-MM-dd HH:mm:ss"/>
    				</td>
     			<td>${msglist.status }</td>
     			
